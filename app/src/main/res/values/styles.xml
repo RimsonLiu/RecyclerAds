@@ -8,4 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <declare-styleable name="RecyclerAdView">
+        <!--上层图片-->
+        <attr name="topImageView" format="integer"/>
+        <!--下层图片-->
+        <attr name="bottomImageView" format="reference"/>
+    </declare-styleable>
+
 </resources>
