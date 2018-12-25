@@ -5,6 +5,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:scrollbars="vertical"
+	android:id="@+id/scrollView"
 	tools:context=".MainActivity">
 
 	<LinearLayout
@@ -13,22 +14,26 @@
 		android:orientation="vertical">
 
 		<View
+			android:id="@+id/blank_view_1"
 			android:layout_width="wrap_content"
-			android:layout_height="400dp" />
+			android:layout_height="500dp" />
 
-		<ImageView
-			android:id="@+id/iv1"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content" />
+		<com.rimson.recyclerads.view.ClearImageView
+			android:id="@+id/clear_image"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			/>
 
-		<com.rimson.recyclerads.RecyclerAdView
+
+		<com.rimson.recyclerads.view.RecyclerAdView
 			android:id="@+id/rav"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content" />
 
 		<View
+			android:id="@+id/blank_view_2"
 			android:layout_width="wrap_content"
-			android:layout_height="400dp" />
+			android:layout_height="500dp" />
 	</LinearLayout>
 
 

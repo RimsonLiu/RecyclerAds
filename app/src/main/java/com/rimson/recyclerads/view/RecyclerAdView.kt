@@ -1,11 +1,10 @@
-package com.rimson.recyclerads
+package com.rimson.recyclerads.view
 
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.widget.FrameLayout
 import android.widget.ImageView
-import com.bumptech.glide.Glide
 
 class RecyclerAdView : FrameLayout {
 
@@ -14,9 +13,6 @@ class RecyclerAdView : FrameLayout {
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int)
             : super(context, attrs, defStyleAttr)
 
-    private val mPaint = Paint()
-    private val maskPaint = Paint()
-    private val ovalPaint = Paint()
     private val clearPaint = Paint()
 
     private var topBitmap: Bitmap? = null
@@ -33,18 +29,17 @@ class RecyclerAdView : FrameLayout {
     private var radius = 0
 
     init {
-        // val typedArray = context.obtainStyledAttributes()
-        maskPaint.color = Color.WHITE
-        ovalPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.DST_IN)
         clearPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
     }
 
     public fun setImageBitmap(top: Bitmap, bottom: Bitmap) {
-        Glide.with(this)
-            .load(top)
-            .into(topImageView)
-        this.addView(topImageView, layoutParams)
+        topImageView.setImageBitmap(top)
+        bottomImageView.setImageBitmap(bottom)
+        this.addView(bottomImageView, 0, layoutParams)
+        this.addView(topImageView, 1, layoutParams)
+    }
 
+    public fun clear() {
     }
 
     public fun setRatio(ratio: Float) {
