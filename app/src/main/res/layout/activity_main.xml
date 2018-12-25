@@ -18,22 +18,11 @@
 			android:layout_width="wrap_content"
 			android:layout_height="500dp" />
 
-		<FrameLayout
+		<com.rimson.recyclerads.view.RecyclerAdView
+			android:id="@+id/recycler_ad"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content">
-
-			<ImageView
-				android:id="@+id/bottom_image"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content" />
-
-			<com.rimson.recyclerads.view.RecyclerImageView
-				android:id="@+id/clear_image"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				/>
-
-		</FrameLayout>
+		</com.rimson.recyclerads.view.RecyclerAdView>
 
 		<View
 			android:id="@+id/blank_view_2"

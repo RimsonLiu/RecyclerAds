@@ -13,11 +13,16 @@ class RecyclerImageView(context: Context, attrs: AttributeSet?, defStyle: Int) :
     constructor(context: Context) : this(context, null, 0)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
 
+    private lateinit var mBitmap: Bitmap
     private var mStartX = 0f
     private var mStartY = 0f
     private var mRadius = 0
-
     private var clearPaint = Paint()
+
+    companion object {
+        const val TOP_LEFT = 0
+        const val BOTTOM_RIGHT = 1
+    }
 
     init {
         // 关闭硬件加速
@@ -31,15 +36,24 @@ class RecyclerImageView(context: Context, attrs: AttributeSet?, defStyle: Int) :
         invalidate()
     }
 
+    fun updateCenter(pos: Int) {
+        Log.d("hehe", "updateCenter" + pos)
+        mStartX = if (pos == 0) (measuredWidth * 0.25).toFloat()
+        else (measuredWidth * 0.75).toFloat()
+        mStartY = if (pos == 0) (measuredHeight * 0.25).toFloat()
+        else (measuredHeight * 0.75).toFloat()
+        mBitmap = (drawable as BitmapDrawable).bitmap
+    }
+
     override fun onDraw(canvas: Canvas?) {
-        Log.d("hehe", "onDraw")
         super.onDraw(canvas)
-        val bitmap = (drawable as BitmapDrawable).bitmap
-        mStartX = (measuredWidth * 0.75).toFloat()
-        mStartY = (measuredHeight * 0.75).toFloat()
-        canvas?.drawBitmap(bitmap, 0f, 0f, null)
+        canvas?.drawBitmap(mBitmap, 0f, 0f, null)
         canvas?.drawCircle(mStartX, mStartY, mRadius.toFloat(), clearPaint)
     }
 
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        mBitmap = (drawable as BitmapDrawable).bitmap
+    }
 
 }
